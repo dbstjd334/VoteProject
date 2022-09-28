@@ -1,4 +1,4 @@
-package voteList;
+package Pack01;
 
 public class VoteResultDTO {
 	private String selectNum;

@@ -15,7 +15,8 @@
 	VoteResult voteResult = (VoteResult)request.getAttribute("voteResult");
 	%>
 	
-	<div>현재 투표 결과 - 모두 투표를 하셔야 투표 결과를 볼 수 있습니다.</div>
+	<div>현재 투표 결과 - 모두 투표를 하셔야 투표 결과를 볼 수 있습니다 .</div>
+	<div>현재 투표 인원 : <%=voteResult.getVoteResult() %> / 16</div>
 	
 	<%
 	if(voteResult.getVoteResult()== 16){%>

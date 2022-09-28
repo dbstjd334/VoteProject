@@ -1,3 +1,4 @@
+<%@page import="Pack01.VoteResult"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
@@ -13,7 +14,7 @@
 <body>
 	
 	<h1>동물의 왕 뽑기</h1>
-	
+	 
 	
 	<%
 	String id = request.getParameter("id");
@@ -21,12 +22,15 @@
 	
 	
 	<form action="voteResult" method="post">
-		<input type="radio" name="selectNum" value="1"/>호랑이
-		<input type="radio" name="selectNum" value="2"/>코끼리
-		<input type="radio" name="selectNum" value="3"/>독수리
-		<input type="hidden" name="id" value=<%=id%>>
-		<input type="submit" value="투표하기"/>
+
+			<input type="radio" name="selectNum" value="1">호랑이<br/>	
+			<input type="radio" name="selectNum" value="2">코끼리<br/>	
+			<input type="radio" name="selectNum" value="3">독수리<br/>	
+			<input type="hidden" name="id" value=<%=id%>><br/>	
+		<input type="submit" value="투표하기">
+		
 	</form>
+
 	
 	
 

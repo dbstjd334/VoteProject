@@ -137,6 +137,8 @@ public class VoteResult{
 
 		        rs2 = pstmt2.executeQuery();
 		        
+		     
+		        
 		        while(rs2.next()) {
 		        	tiger= rs2.getString("sum1");
 		        	elep= rs2.getString("sum2");

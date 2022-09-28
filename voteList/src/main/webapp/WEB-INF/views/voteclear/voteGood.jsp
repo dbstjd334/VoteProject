@@ -17,9 +17,10 @@
 	
 	<div>현재 투표 결과 - 모두 투표를 하셔야 투표 결과를 볼 수 있습니다 .</div>
 	<div>현재 투표 인원 : <%=voteResult.getRecentPerson() %> /  <%=voteResult.getSumPerson() %></div>
+
 	
 	<%
-	if(voteResult.getVoteResult() == Integer.parseInt(voteResult.getSumPerson())){%>
+	if(voteResult.getRecentPerson().equals(voteResult.getSumPerson())){%>
 				<span>호랑이 : <%=voteResult.getTiger() %></span>
 				<span>코끼리 : <%=voteResult.getElep() %></span>
 				<span>독수리 : <%=voteResult.getEager()%></span>

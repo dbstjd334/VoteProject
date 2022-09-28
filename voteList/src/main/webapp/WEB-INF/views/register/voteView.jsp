@@ -19,16 +19,21 @@
 	<%
 	String id = request.getParameter("id");
 	%>
-	
-	
-	<form action="voteResult" method="post">
 
-			<input type="radio" name="selectNum" value="1">호랑이<br/>	
-			<input type="radio" name="selectNum" value="2">코끼리<br/>	
-			<input type="radio" name="selectNum" value="3">독수리<br/>	
+		<form action="voteResult" method="post">
+
+			<input type="radio" name="selectNum" value="1" required>호랑이<br/>	
+			<input type="radio" name="selectNum" value="2" required>코끼리<br/>	
+			<input type="radio" name="selectNum" value="3" required>독수리<br/>	
 			<input type="hidden" name="id" value=<%=id%>><br/>	
 		<input type="submit" value="투표하기">
-		
+
+	</form>
+
+
+	<br/>
+	<form action="voteCount" method="post">
+		<input type="submit"  value="투표 현황 확인" >
 	</form>
 
 	

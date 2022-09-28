@@ -24,5 +24,20 @@ public class voteController {
 		return voteResult.getRedirectView();
 		
 	}
+	
+	@PostMapping("/voteCount")
+	String voteCount(VoteResultDTO voteResultDTO,Model model) {
+		
+		VoteResult voteResult = new VoteResult(voteResultDTO.getId(),voteResultDTO.getSelectNum());
+		
+		voteResult.voteInsert();
+		
+		model.addAttribute("voteResult",voteResult);
+
+		
+		return "/voteclear/voteCount";
+		
+	}
+	   
 	   
 }

@@ -15,8 +15,9 @@
 	VoteResult voteResult = (VoteResult)request.getAttribute("voteResult");
 	%>
 	
-	<div>현재 투표 결과 - 모두 투표를 하셔야 투표 결과를 볼 수 있습니다 .</div>
 	<div>현재 투표 인원 : <%=voteResult.getRecentPerson() %> /  <%=voteResult.getSumPerson() %></div>
+	<div>투표 현황은 이전 페이지의 [투표 현황 확인] 을 통해 확인 가능합니다.</div>
+	<a href="#" onClick="history.back()">이전 페이지</a><br/>
 
 	
 	<%
@@ -24,7 +25,9 @@
 				<span>호랑이 : <%=voteResult.getTiger() %></span>
 				<span>코끼리 : <%=voteResult.getElep() %></span>
 				<span>독수리 : <%=voteResult.getEager()%></span>
-    <% }%>
+    <%}%>
+    
+    <a href="/voteList/index.jsp">로그인 페이지로 이동하기</a>
 	
 	
 </body>

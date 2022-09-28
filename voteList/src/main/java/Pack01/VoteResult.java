@@ -47,6 +47,8 @@ public class VoteResult{
 		this.selectNum = selectNum;
 	}
 	
+	public VoteResult() {};
+	
 
 
 	public  void setVoteResult(int voteResult) {
@@ -132,7 +134,7 @@ public class VoteResult{
 	    	  }
 	    	  
 	    	  
-	    	  String sql2= "SELECT SUM(selectNum=1) as sum1, SUM(selectNum=2) as sum2, SUM(selectNum=3) as sum3, (SELECT COUNT(*) AS cnt FROM voteList WHERE selectNum IS NOT NULL) AS cnt, count(*) as sumcnt FROM voteList;";
+	    	  String sql2= "SELECT SUM(selectNum=1) as sum1, SUM(selectNum=2) as sum2, SUM(selectNum=3) as sum3, (SELECT COUNT(*) AS cnt FROM voteList WHERE selectNum IS NOT NULL) AS cnt, count(*) as sumcnt FROM voteList";
 		       pstmt2 = conn.prepareStatement(sql2);
 
 		        rs2 = pstmt2.executeQuery();
@@ -141,8 +143,17 @@ public class VoteResult{
 		        
 		        while(rs2.next()) {
 		        	tiger= rs2.getString("sum1");
+		        	if (tiger == null) {
+		        		tiger = "0";
+		        	}
 		        	elep= rs2.getString("sum2");
+		        	if (elep == null) {
+		        		elep = "0";
+		        	}
 		        	eager= rs2.getString("sum3");
+		        	if (eager == null) {
+		        		eager = "0";
+		        	}
 		        	recentPerson = rs2.getString("cnt");
 		        	sumPerson = rs2.getString("sumcnt");
 		        }

@@ -24,6 +24,10 @@ public class VoteResult{
 	private String elep;
 	private String eager;
 	
+	private String recentPerson;
+	private String sumPerson;
+	
+	
 	private static int voteResult =0;
 	
 	
@@ -74,10 +78,12 @@ public class VoteResult{
 	      PreparedStatement pstmt = null;
 	      PreparedStatement pstmt1 = null;
 	      PreparedStatement pstmt2 = null;
+	      PreparedStatement pstmt3 = null;
 	      Statement stmt = null;
 	      ResultSet rs = null;
 	      ResultSet rs1 = null;
 	      ResultSet rs2 = null;
+	      ResultSet rs3 = null;
 
 	      try {
 	         Class.forName(driver);
@@ -126,7 +132,7 @@ public class VoteResult{
 	    	  }
 	    	  
 	    	  
-	    	  String sql2= " SELECT SUM(selectNum=1) as sum1, SUM(selectNum=2) as sum2, SUM(selectNum=3) as sum3 FROM voteList";
+	    	  String sql2= "SELECT SUM(selectNum=1) as sum1, SUM(selectNum=2) as sum2, SUM(selectNum=3) as sum3, (SELECT COUNT(*) AS cnt FROM voteList WHERE selectNum IS NOT NULL) AS cnt, count(*) as sumcnt FROM voteList;";
 		       pstmt2 = conn.prepareStatement(sql2);
 
 		        rs2 = pstmt2.executeQuery();
@@ -135,12 +141,10 @@ public class VoteResult{
 		        	tiger= rs2.getString("sum1");
 		        	elep= rs2.getString("sum2");
 		        	eager= rs2.getString("sum3");
+		        	recentPerson = rs2.getString("cnt");
+		        	sumPerson = rs2.getString("sumcnt");
 		        }
 		        
-		        
-		        
-	    	  
-	    	  
 
 
 	        
@@ -220,6 +224,26 @@ public class VoteResult{
 
 	public void setEager(String eager) {
 		this.eager = eager;
+	}
+
+
+	public String getRecentPerson() {
+		return recentPerson;
+	}
+
+
+	public void setRecentPerson(String recentPerson) {
+		this.recentPerson = recentPerson;
+	}
+
+
+	public String getSumPerson() {
+		return sumPerson;
+	}
+
+
+	public void setSumPerson(String sumPerson) {
+		this.sumPerson = sumPerson;
 	}
 	
 	

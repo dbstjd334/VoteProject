@@ -17,6 +17,8 @@ public class voteController {
 		voteResult.voteInsert();
 		
 		model.addAttribute("alertstr",voteResult.getAlertstr());
+		
+		model.addAttribute("voteResult",voteResult);
 
 		
 		return voteResult.getRedirectView();

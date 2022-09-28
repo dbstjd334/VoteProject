@@ -20,6 +20,11 @@ public class VoteResult{
 	private String redirectView;
 	private String alertstr;
 	
+	private String tiger;
+	private String elep;
+	private String eager;
+	
+	private static int voteResult =0;
 	
 	
 	public String getRedirectView() {
@@ -37,6 +42,23 @@ public class VoteResult{
 		this.id = id;
 		this.selectNum = selectNum;
 	}
+	
+
+
+	public  void setVoteResult(int voteResult) {
+		VoteResult.voteResult = voteResult;
+	}
+
+
+	public  int getVoteResult() {
+		return voteResult;
+	}
+
+
+	public int voteCalc() {
+		
+		return 1;
+	}
 
 
 	void voteInsert() {
@@ -51,9 +73,11 @@ public class VoteResult{
 	      Connection conn = null;
 	      PreparedStatement pstmt = null;
 	      PreparedStatement pstmt1 = null;
+	      PreparedStatement pstmt2 = null;
 	      Statement stmt = null;
 	      ResultSet rs = null;
 	      ResultSet rs1 = null;
+	      ResultSet rs2 = null;
 
 	      try {
 	         Class.forName(driver);
@@ -90,11 +114,32 @@ public class VoteResult{
 		         String sql1= "update voteList set selectNum ="+selectNum+" where id = "+id+"";
 
 			      pstmt1 = conn.prepareStatement(sql1);
+			      
+
 
 			      rs1 = pstmt1.executeQuery();
+			      voteResult += pstmt1.executeUpdate();
+			      
+			      System.out.println(voteResult);
 			      
 			      redirectView=  "/voteclear/voteGood";
 	    	  }
+	    	  
+	    	  
+	    	  String sql2= " SELECT SUM(selectNum=1) as sum1, SUM(selectNum=2) as sum2, SUM(selectNum=3) as sum3 FROM voteList";
+		       pstmt2 = conn.prepareStatement(sql2);
+
+		        rs2 = pstmt2.executeQuery();
+		        
+		        while(rs2.next()) {
+		        	tiger= rs2.getString("sum1");
+		        	elep= rs2.getString("sum2");
+		        	eager= rs2.getString("sum3");
+		        }
+		        
+		        
+		        
+	    	  
 	    	  
 
 
@@ -116,9 +161,15 @@ public class VoteResult{
 	            if (rs1 != null) {
 		               rs1.close();
 		            }
+	            if (rs2 != null) {
+		               rs2.close();
+		            }
 		            if (pstmt1 != null) {
 		               pstmt1.close();
 		            }
+		            if (pstmt2 != null) {
+			               pstmt2.close();
+			            }
 
 		            if (conn != null && !conn.isClosed()) {
 		               conn.close();
@@ -139,6 +190,36 @@ public class VoteResult{
 
 	public void setAlertstr(String alertstr) {
 		this.alertstr = alertstr;
+	}
+
+
+	public String getTiger() {
+		return tiger;
+	}
+
+
+	public void setTiger(String tiger) {
+		this.tiger = tiger;
+	}
+
+
+	public String getElep() {
+		return elep;
+	}
+
+
+	public void setElep(String elep) {
+		this.elep = elep;
+	}
+
+
+	public String getEager() {
+		return eager;
+	}
+
+
+	public void setEager(String eager) {
+		this.eager = eager;
 	}
 	
 	

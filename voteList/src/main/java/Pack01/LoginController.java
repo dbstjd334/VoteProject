@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LoginController {
 	
 	
-	@PostMapping("/register/LoginCheck")
+	@PostMapping("/LoginCheck")
 	public String  login(LoginDTO loginDTO, Model model) {
 		
 		
@@ -19,6 +19,8 @@ public class LoginController {
 		logincheck.LoginValidCheck();
 		
 		model.addAttribute("alertstr",logincheck.getAlertstr());
+		model.addAttribute("id",loginDTO.getId());
+		
 
 		return logincheck.getRedirectView();
 	}

@@ -13,17 +13,12 @@
 
 <title>메인 페이지</title>
 
-
-
-
-	
-
 </head>
 
 <body>
-	<form method=post action="register/LoginCheck" id = "searchform">
-		아이디:<input type="text" name="id"  required><br/>
-		비밀번호:<input type="password" name="pw" required><br/>
+	<form method=post action="LoginCheck" id = "searchform">
+		아이디:<input type="text" name="id"  required pattern="[0-9]+"><br/>
+		비밀번호:<input type="password" name="pw" required pattern="[0-9]+"><br/>
 		<input type="submit" value="로그인"><br/>
 	</form>
 	

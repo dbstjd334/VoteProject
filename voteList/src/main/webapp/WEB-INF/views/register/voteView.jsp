@@ -15,13 +15,20 @@
 	<h1>동물의 왕 뽑기</h1>
 	
 	
+	<%
+	String id = request.getParameter("id");
+	%>
+	
 	
 	<form action="voteResult" method="post">
-		<input type="radio" name="selectNum"value="1"/>호랑이
+		<input type="radio" name="selectNum" value="1"/>호랑이
 		<input type="radio" name="selectNum" value="2"/>코끼리
 		<input type="radio" name="selectNum" value="3"/>독수리
+		<input type="hidden" name="id" value=<%=id%>>
 		<input type="submit" value="투표하기"/>
 	</form>
+	
+	
 
 </body>
 </html>

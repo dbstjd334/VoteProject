@@ -14,7 +14,12 @@
 	%>
 
 <div>현재 투표 인원 : <%=voteResult.getRecentPerson() %> /  <%=voteResult.getSumPerson() %></div>
-				<span>호랑이 : <%=voteResult.getTiger() %></span>
+	<%
+	if(voteResult.getRecentPerson().equals(voteResult.getSumPerson())){%>
+<br/><div>모든 인원이 투표를 완료하였습니다.</div>
+<div>투표 결과</div>
+   <%}%>
+				<br/><span>호랑이 : <%=voteResult.getTiger() %></span>
 				<span>코끼리 : <%=voteResult.getElep() %></span>
 				<span>독수리 : <%=voteResult.getEager()%></span><br/>
 				

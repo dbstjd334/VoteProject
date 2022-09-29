@@ -20,12 +20,6 @@
 	<a href="#" onClick="history.back()">이전 페이지</a><br/>
 
 	
-	<%
-	if(voteResult.getRecentPerson().equals(voteResult.getSumPerson())){%>
-				<span>호랑이 : <%=voteResult.getTiger() %></span>
-				<span>코끼리 : <%=voteResult.getElep() %></span>
-				<span>독수리 : <%=voteResult.getEager()%></span>
-    <%}%>
     
     <a href="/voteList/index.jsp">로그인 페이지로 이동하기</a>
 	
